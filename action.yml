@@ -1,8 +1,8 @@
 name: Create ECR Repository
 description: Create an ECR Repository if it doesn't exist
 inputs:
-  version:
-    repository: The repository name to create in the ECR registry
+  repository:
+    description: The repository name to create in the ECR registry
     type: string
     required: true
 runs:
