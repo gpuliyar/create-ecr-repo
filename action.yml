@@ -9,10 +9,10 @@ runs:
   using: composite
   steps:
     - run: |
-        output=$(aws ecr describe-repositories --repository-names ${REPO_NAME} 2>&1)
+        output=$(aws ecr describe-repositories --repository-names ${{ inputs.repository }} 2>&1)
         if [ $? -ne 0 ]; then
           if echo ${output} | grep -q RepositoryNotFoundException; then
-            aws ecr create-repository --repository-name ${REPO_NAME}
+            aws ecr create-repository --repository-name ${{ inputs.repository }}
           else
             >&2 echo ${output}
           fi
